@@ -34,12 +34,14 @@ class Login extends \Core\Controller
 
         if ($user) {
 
+            $_SESSION['user_id'] = $user->id;
+
             $this->redirect('/');
 
         } else {
 
             View::renderTemplate('Login/new.html', [
-                'email' => $_POST['email']
+                'email' => $_POST['email'],
             ]);
         }
     }
