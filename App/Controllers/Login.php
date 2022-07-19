@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use \Core\View;
+use \App\Models\User;
 
 /**
  * Login controller
@@ -11,6 +12,7 @@ use \Core\View;
  */
 class Login extends \Core\Controller
 {
+
     /**
      * Show the login page
      *
@@ -21,13 +23,15 @@ class Login extends \Core\Controller
         View::renderTemplate('Login/new.html');
     }
 
-     /**
+    /**
      * Log in a user
      *
      * @return void
      */
     public function createAction()
     {
-        echo($_REQUEST['email'] . ', ' . $_REQUEST['password']);
+        $user = User::findByEmail($_POST['email']);
+
+        var_dump($user);
     }
 }
