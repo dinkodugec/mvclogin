@@ -26,7 +26,7 @@ class User extends \Core\Model
      *
      * @return void
      */
-    public function __construct($data = [])
+    public function __construct($data = [])   /* making arguments optional */
     {
         foreach ($data as $key => $value) {
             $this->$key = $value;
@@ -123,10 +123,31 @@ class User extends \Core\Model
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
 
-        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
-
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class()); /* The get_called_class() function is an inbuilt function in PHP which is used to get the class name where the static method is called. */
+                                                                 /*  FETCH_CLASS return object */
         $stmt->execute();
 
         return $stmt->fetch();
+    }
+
+     /**
+     * Authenticate a user by email and password.
+     *
+     * @param string $email email address
+     * @param string $password password
+     *
+     * @return mixed  The user object or false if authentication fails
+     */
+    public static function authenticate($email, $password)
+    {
+        $user = static::findByEmail($email); /* finding user by email address */
+
+        if ($user) {
+            if (password_verify($password, $user->password_hash)) {  /* password_verify - check is password is match with hash */
+                return $user;/*  return user object */
+            }
+        }
+
+        return false;
     }
 }
