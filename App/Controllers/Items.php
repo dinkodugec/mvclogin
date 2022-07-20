@@ -20,13 +20,8 @@ class Items extends \Core\Controller
      */
     public function indexAction()
     {
-        if (! Auth::isLoggedIn()) {
-
-            Auth::rememberRequestedPage();
-
-            $this->redirect('/login');
-        }
-
-        View::renderTemplate('Items/index.html');
+        $this->requireLogin();
+        
+       View::renderTemplate('Items/index.html');
     }
 }
