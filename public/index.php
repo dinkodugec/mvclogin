@@ -1,5 +1,7 @@
 <?php
 
+
+
 /**
  * Front controller
  *
@@ -22,6 +24,8 @@ set_exception_handler('Core\Error::exceptionHandler');
 /* SESSIONS */
 
 session_start();
+
+
 
 
 /**
