@@ -35,6 +35,7 @@ class Auth
             }
         }
     }
+
     /**
      * Logout the user
      *
@@ -64,8 +65,6 @@ class Auth
       session_destroy();
     }
 
-  
-
     /**
      * Remember the originally-requested page in the session
      *
@@ -86,7 +85,7 @@ class Auth
         return $_SESSION['return_to'] ?? '/';
     }
 
-     /**
+    /**
      * Get the current logged-in user, from the session or the remember-me cookie
      *
      * @return mixed The user model or null if not logged in
@@ -100,7 +99,6 @@ class Auth
         } else {
 
             return static::loginFromRememberCookie();
-
         }
     }
 
@@ -117,7 +115,7 @@ class Auth
 
             $remembered_login = RememberedLogin::findByToken($cookie);
 
-            if ($remembered_login) {
+            if ($remembered_login && ! $remembered_login->hasExpired()) {
 
                 $user = $remembered_login->getUser();
 
