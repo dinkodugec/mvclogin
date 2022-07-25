@@ -14,25 +14,25 @@ class Config
      * Database host
      * @var string
      */
-    const DB_HOST = 'your-database-host';
+    const DB_HOST = 'localhost';
 
     /**
      * Database name
      * @var string
      */
-    const DB_NAME = 'your-database-name';
+    const DB_NAME = 'mvclogin';
 
     /**
      * Database user
      * @var string
      */
-    const DB_USER = 'your-database-user';
+    const DB_USER = 'root';
 
     /**
      * Database password
      * @var string
      */
-    const DB_PASSWORD = 'your-database-password';
+    const DB_PASSWORD = '';
 
     /**
      * Show or hide error messages on screen
@@ -40,9 +40,9 @@ class Config
      */
     const SHOW_ERRORS = true;
 
-    /**
-     * Secret key for hashing
-     * @var boolean
-     */
-    const SECRET_KEY = 'your-secret-key';
+     /*   secret key for hashing
+   
+      $var boolean */
+
+    const SECRET_KEY = '34MZVItyAtKPNPY0jr9QK353WdztxOT7';
 }
