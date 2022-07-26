@@ -63,6 +63,8 @@ class Auth
 
       // Finally destroy the session
       session_destroy();
+
+      static::forgetLogin();
     }
 
     /**
@@ -123,6 +125,30 @@ class Auth
 
                 return $user;
             }
+        }
+    }
+
+    
+    /**
+     * Forget the remembered login, if present
+     *
+     * @return void
+     */
+    protected static function forgetLogin()
+    {
+        $cookie = $_COOKIE['remember_me'] ?? false;
+
+        if ($cookie) {
+
+            $remembered_login = RememberedLogin::findByToken($cookie);
+
+            if ($remembered_login) {
+
+                $remembered_login->delete();
+
+            }
+
+            setcookie('remember_me', '', time() - 3600);  // set to expire in the past
         }
     }
 }
