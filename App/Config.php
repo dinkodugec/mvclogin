@@ -45,4 +45,18 @@ class Config
       $var boolean */
 
     const SECRET_KEY = '34MZVItyAtKPNPY0jr9QK353WdztxOT7';
+
+    /**
+     * Mailgun API key
+     *
+     * @var string
+     */
+    const MAILGUN_API_KEY = '8641339d7fa12ff5bbab2812460acba4-c250c684-b893ab7b';
+
+    /**
+     * Mailgun domain
+     *
+     * @var string
+     */
+    const MAILGUN_DOMAIN = 'sandboxe39cdf76bc0c49f7b6f257503812d823.mailgun.org';
 }
