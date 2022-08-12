@@ -33,4 +33,16 @@ class Password extends \Core\Controller
 
         View::renderTemplate('Password/reset_requested.html');
     }
+
+    /**
+     * Show the reset password form
+     *
+     * @return void
+     */
+    public function resetAction()  //method that matches url
+    {
+        $token = $this->route_params['token'];
+
+        echo $token;
+    }
 }
