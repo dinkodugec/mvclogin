@@ -68,7 +68,7 @@ class Password extends \Core\Controller
 
         if ($user->resetPassword($_POST['password'])) {
 
-            echo "password valid";
+            View::renderTemplate('Password/reset_success.html');
 
         } else {
 
